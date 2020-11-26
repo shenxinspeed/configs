@@ -11,14 +11,12 @@ model_config:
     num_labels: 2
     # Number of features extracted out per image
     num_features: 1
-
     image_encoder:
       type: resnet152
       params:
         pretrained: true
         pool_type: avg
         num_output_features: 1
-
     text_encoder:
       type: transformer
       params:
@@ -28,7 +26,8 @@ model_config:
         num_attention_heads: 12
         output_attentions: false
         output_hidden_states: false
-
+    losses:
+    - cross_entropy
     classifier:
       type: mlp
       params:
